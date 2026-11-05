@@ -55,7 +55,7 @@ def evaluate_stream(y_true, y_pred, n_known, known_ids, match_labels=False):
 
 
 def mask_undefined(res, undefined):
-    """Sets NaN (in place) for criteria the method does not support ("crit1".."crit3")."""
+    """Sets NaN for criteria the method does not support."""
     for crit in undefined:
         res[METRIC_KEYS[int(crit[-1]) - 1]] = float("nan")
     return res

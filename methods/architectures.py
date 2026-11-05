@@ -3,11 +3,15 @@ import torch.nn as nn
 
 def EncDec_mlp(n_features, n_embed=10, hidden=(100, 10)):
     """Dense autoencoder; `hidden` are encoder widths, the decoder mirrors them."""
-    widths = [n_features, *hidden, n_embed]
+    encoder_widths = [n_features] + list(hidden) + [n_embed]
+    decoder_widths = encoder_widths[::-1]
+
     layers = []
-    for a, b in zip(widths, widths[1:]):
-        layers += [nn.Linear(a, b), nn.ReLU()]
-    for a, b in zip(widths[::-1], widths[::-1][1:]):
-        layers += [nn.Linear(a, b), nn.ReLU()]
-    layers.pop()
+    for i in range(len(encoder_widths) - 1):
+        layers.append(nn.Linear(encoder_widths[i], encoder_widths[i + 1]))
+        layers.append(nn.ReLU())
+    for i in range(len(decoder_widths) - 1):
+        layers.append(nn.Linear(decoder_widths[i], decoder_widths[i + 1]))
+        if i < len(decoder_widths) - 2:
+            layers.append(nn.ReLU())
     return nn.Sequential(*layers)

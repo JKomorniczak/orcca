@@ -37,7 +37,7 @@ markers=['x',
          '^', 'o',
          '^', 'o',]
 
-fig, ax = plt.subplots(1, 1, figsize=(6, 6))
+fig, ax = plt.subplots(1, 1, figsize=(8, 5))
 
 # one point per method and stream
 for m_id in range(len(methods_names)):

@@ -71,12 +71,12 @@ def run_single(stream, kind, build, random_state, cfg):
     torch.manual_seed(random_state)
     detector = build(random_state, cfg["true_n_classes"])
 
-    if kind == "stream":
+    if kind == "stream": # ORCCA, ORCCA_noadapt, CluStream, DenStream
         offline_preds = np.array([detector.process(X[i].reshape(1, -1), y[i])[1]
                                   for i in range(offline)])
         predictions = np.array([detector.process(X[i].reshape(1, -1))[1]
                                 for i in range(offline, X.shape[0])])
-    else:
+    else: # MINAS, ECSMinerWF, ECHO, OCND, CND
         offline_preds = None
         X_flat = X.numpy().astype(np.float64)
         detector.fit(X_flat[:offline], y[:offline])

@@ -9,12 +9,6 @@ class Minas():
 
     [1] de Faria, Elaine Ribeiro, André Carlos Ponce de Leon Ferreira Carvalho, and Joao Gama. "MINAS: multiclass learning algorithm for novelty detection in data streams." 
     Data mining and knowledge discovery 30 (2016): 640-680.
-
-    Differences from streamndr:
-      * micro-clusters keep only the summary (N, LS, SS, T, label), not the examples (as in the paper);
-      * radius = radius_factor * sqrt(SS/N - |LS/N|^2) (CluStream definition), fixed at creation;
-      * dist_std (std of distances to centroid) stored for the TV1 threshold;
-      * explained when distance <= radius (Algorithm 2; streamndr: <).
     """
     MAX_MEMORY_SIZE = 50000
 

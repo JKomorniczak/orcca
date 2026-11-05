@@ -36,7 +36,8 @@ grid = np.linspace(-6, 30, 800)
 kde = [np.exp(m['kde'].score_samples((grid + float(m['mean'])).reshape(-1, 1))) for m in known]
 z_lo, z_hi = Z.min() - 0.2, Z.max() + 0.2
 
-fig, ax = plt.subplots(1, 4, figsize=(14, 4))
+fig, ax = plt.subplots(2, 2, figsize=(8, 7))
+ax = ax.ravel()
 
 for k in range(2):
     a = ax[k]

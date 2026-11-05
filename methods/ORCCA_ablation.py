@@ -20,7 +20,8 @@ class ORCCA_ablation(ORCCA):
         if self.known_strategy == "contrastive_argmin" or self.n_known == 0:
             return super().process(x, y)
 
-        # cascade over all models, the first one that recognizes the sample wins
+        # cascade over all models
+        # the first one that recognizes the sample wins
         x = torch.as_tensor(x, dtype=torch.float32).reshape(1, -1)
         errors = []
         for i, m in enumerate(self.models):

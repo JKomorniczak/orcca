@@ -24,11 +24,6 @@ class Echo:
     [1] Haque, Ahsanul, et al. "Efficient handling of concept drift and concept evolution over stream data."
     2016 IEEE 32nd international conference on data engineering (ICDE). IEEE, 2016.
 
-    Differences from streamndr:
-      * fully unsupervised: retraining after a change point uses the ensemble's own predictions
-        for all window points (no true-label queries, no tau);
-      * k-means initialization (streamndr/paper: MCIKMeans);
-      * NaN point-biserial coefficient -> 1.0; Beta pdf overflow -> no change; empty window -> no retrain.
     """
 
     def __init__(self,

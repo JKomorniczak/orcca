@@ -24,10 +24,10 @@ class ORCCA:
         self.adapt_prob = adapt_prob
         self.adapt_window = adapt_window
 
-        self.ae = architecture            # novelty models continue from its weights
+        self.ae = architecture # novelty models continue from its weights
         # per model: ae, kde, std, mean (scaled error), threshold, opt, hist (normalized errors)
         self.models = []
-        self.n_known = 0                  # the first n_known models are the known classes
+        self.n_known = 0  # the first n_known models are the known classes
         self.buffer, self.buffer_errors, self.labels = [], [], []
         self.rng = np.random.RandomState(random_state)
 
@@ -57,7 +57,7 @@ class ORCCA:
         e = e / std
         mean = e.mean()
 
-        # contrastive threshold between own and other known classes' errors
+        # contrastive threshold between own and other known classes errors
         threshold = mean + self.fallback
         if negatives is not None and len(negatives) >= 2:
             neg = self._errors(ae, negatives) / std

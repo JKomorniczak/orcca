@@ -7,11 +7,8 @@ CluStream gets the true number of clusters (n_macro_clusters).
 """
 
 from typing import Optional, Tuple
-
 import numpy as np
-
 from river import cluster
-
 
 class _RiverAdapter:
     def __init__(self, model) -> None:

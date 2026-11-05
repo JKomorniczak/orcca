@@ -63,6 +63,6 @@ class CND:
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore", ConvergenceWarning)
                 self.mlp.partial_fit(X[known], labels[known])
-            # keep loss_curve_ from growing with the stream (state size)
+            # keep loss_curve_ from growing with the stream
             del self.mlp.loss_curve_[:-1]
         return np.where(known, labels, -1).astype(int)
